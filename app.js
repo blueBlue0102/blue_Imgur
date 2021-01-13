@@ -4,7 +4,10 @@ const formidable = require('formidable');
 const fs = require('fs');
 
 const app = express()
+const dir = path.join(__dirname, 'img');
 const port = 8080
+
+app.use(express.static(dir));
 
 app.get('/', (req, res) => {
     res.sendFile('/upload.html', {root: __dirname });
@@ -24,17 +27,6 @@ app.post('/fileupload', (req, res) => {
         }
       });
     });
-})
-
-app.get('/img/:file', (req, res) => {
-  var newPath = path.join(__dirname, 'img', req.params.file);
-  fs.readFile(newPath, (err, data) => {
-    if(err) {res.status(404).send('404 not found');}
-    else {
-      res.write(data);
-      res.end();
-    }
-  });
 })
 
 app.listen(port, () => {
