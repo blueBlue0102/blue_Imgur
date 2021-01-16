@@ -9,5 +9,6 @@ config.mime = {
     jpeg: 'image/jpeg',
     png: 'image/png',
 };
+config.uploadHTML = 'newUpload.html'
 
 module.exports = config;
