@@ -10,6 +10,7 @@ exports.showIndex = (req, res) => {
 
 exports.fileUpload = (req, res) => {
     var form = new formidable.IncomingForm();
+    form.maxFileSize = config.maxFileSize;
     form.parse(req, function (err, fields, files) {
       if (err) res.status(400).send(err.message)
       var oldPath = files.filetoupload.path;
