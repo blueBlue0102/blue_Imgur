@@ -3,7 +3,8 @@ https://hackmd.io/@vegetableBird/HJqzn5ehw
 ## 環境套件  
 Node.js v14.15.1  
 express v4.17.1  
-formidable v1.2.2  
+formidable v1.2.2 
+Joi v17.3.0  
 ## 功能   
 ### 基本需求：  
 - 拖拉複製至瀏覽器就可以上傳圖片(不用登入)  
