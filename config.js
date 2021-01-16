@@ -8,9 +8,10 @@ config.mime = {
     jpg: 'image/jpeg',
     jpeg: 'image/jpeg',
     png: 'image/png',
-    mp4: 'image',
-    mov: 'image'
+    mp4: 'video/mp4',
+    mov: 'video/mov',
+    pdf: 'pdf'
 };
-config.uploadHTML = 'upload.html'
+config.uploadHTML = 'upload.html'   //上傳資料的頁面
 
 module.exports = config;

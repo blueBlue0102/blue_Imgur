@@ -20,7 +20,7 @@ exports.fileUpload = (req, res) => {
         else {
           const fileType = config.mime[path.extname(files.filetoupload.name).slice(1).toLowerCase()] || 'WRONG';
           if (fileType === 'WRONG') return res.status(400).end('錯誤的檔案格式！');
-          const newFileName = uniqueString() + path.extname(files.filetoupload.name);
+          const newFileName = uniqueString() + path.extname(files.filetoupload.name).toLowerCase();
           const newPath = path.join(__dirname, config.imgPath, newFileName);
           fs.writeFile(newPath, data, function (err) {
             if (err) return res.status(500).end(err.message);
