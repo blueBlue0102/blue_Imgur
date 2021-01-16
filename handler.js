@@ -9,19 +9,19 @@ exports.showIndex = (req, res) => {
 }
 
 exports.fileUpload = (req, res) => {
-    var form = new formidable.IncomingForm();
-    form.maxFileSize = config.maxFileSize;
+    const form = new formidable.IncomingForm();
+    form.maxFileSize = config.maxSizeOfData;
     form.parse(req, function (err, fields, files) {
-      if (err) res.status(400).send(err.message)
-      var oldPath = files.filetoupload.path;
+      if (err) {res.status(400).send(err.message); return;}
+      const oldPath = files.filetoupload.path;
       fs.readFile(oldPath, (err, data) => {
-        if (err) res.status(400).send(err.message)
+        if (err) {res.status(400).send(err.message); return;}
         else {
           if (files.filetoupload.name === '') {res.status(400).send('沒檔案不能提交'); return};
           const newFileName = uniqueString() + '.' + files.filetoupload.name.split('.').pop();
-          var newPath = path.join(__dirname, config.imgPath, newFileName);
+          const newPath = path.join(__dirname, config.imgPath, newFileName);
           fs.writeFile(newPath, data, function (err) {
-            if (err) res.status(500).send(err.message); 
+            if (err) {res.status(500).send(err.message); return;} 
             else res.redirect(newFileName); 
           });
         }
