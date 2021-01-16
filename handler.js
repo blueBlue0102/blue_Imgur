@@ -13,17 +13,17 @@ exports.fileUpload = (req, res) => {
     const form = new formidable.IncomingForm();
     form.maxFileSize = config.maxSizeOfData;
     form.parse(req, function (err, fields, files) {
-      if (err) {res.status(400).send(err.message); return;}
+      if (err) return res.status(400).end(err.message);
       const oldPath = files.filetoupload.path;
       fs.readFile(oldPath, (err, data) => {
-        if (err) {res.status(400).send(err.message); return;}
+        if (err) return res.status(400).end(err.message);
         else {
           const fileType = config.mime[path.extname(files.filetoupload.name).slice(1).toLowerCase()] || 'WRONG';
-          if (fileType === 'WRONG') {res.status(400).send('錯誤的檔案格式！'); return;};
+          if (fileType === 'WRONG') return res.status(400).end('錯誤的檔案格式！');
           const newFileName = uniqueString() + path.extname(files.filetoupload.name);
           const newPath = path.join(__dirname, config.imgPath, newFileName);
           fs.writeFile(newPath, data, function (err) {
-            if (err) {res.status(500).send(err.message); return;} 
+            if (err) return res.status(500).end(err.message);
             else 
               res.end(newFileName);
           });

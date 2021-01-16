@@ -543,9 +543,9 @@
 							var data = JSON.parse( ajax.responseText );
 							form.classList.add( data.success == true ? 'is-success' : 'is-error' );
 							if( !data.success ) errorMsg.textContent = data.error;
-							else windows.location.href=ajax.responseText;
+							else windows.location.href = ajax.responseText;
 						}
-						else alert( '請選擇檔案！' );
+						else alert( '沒有檔案 或是 檔案格式錯誤' );
 					};
 
 					ajax.onerror = function()
