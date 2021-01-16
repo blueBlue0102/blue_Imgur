@@ -6,7 +6,7 @@ const config = require('./config');
 const uniqueString = require('./function/generateUniqueString');
 
 exports.showIndex = (req, res) => {
-    res.sendFile('/upload.html', {root: __dirname });
+    res.sendFile(config.uploadHTML, {root: __dirname });
 }
 
 exports.fileUpload = (req, res) => {
@@ -24,7 +24,8 @@ exports.fileUpload = (req, res) => {
           const newPath = path.join(__dirname, config.imgPath, newFileName);
           fs.writeFile(newPath, data, function (err) {
             if (err) {res.status(500).send(err.message); return;} 
-            else res.redirect(newFileName); 
+            else 
+              res.end(newFileName);
           });
         }
       });
