@@ -1,6 +1,6 @@
 {
   "name": "blue_imgur",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "My personal imgur service.",
   "main": "app.js",
   "scripts": {
