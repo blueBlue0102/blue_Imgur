@@ -2,21 +2,27 @@
   "name": "blue_imgur",
   "version": "2.0.0",
   "description": "My personal imgur service.",
-  "main": "app.js",
+  "private": true,
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dropzone": "https://github.com/blueBlue0102/dropzone.git",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "formidable": "github:node-formidable/formidable",
     "joi": "^17.3.0"
   },
   "devDependencies": {
+    "css-loader": "^5.2.4",
     "dotenv": "^8.2.0",
-    "jest": "^26.6.3"
+    "jest": "^26.6.3",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.36.1",
+    "webpack-cli": "^4.6.0"
   }
 }
