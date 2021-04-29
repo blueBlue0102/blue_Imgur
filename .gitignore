@@ -1,6 +1,7 @@
 # folder
 node_modules
 .vscode
+public/dropzone-5.7.0
 # JS file
 play ground.js
 # env
