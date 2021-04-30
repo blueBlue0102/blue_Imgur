@@ -7,7 +7,7 @@ require("dotenv").config();
 require("./routers/index")(app);
 
 app.use(express.static(path.join(__dirname, process.env.IMAGE_STORAGE_PATH)));
-app.use(express.static("public"));
+app.use(express.static("dist"));
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
