@@ -1551,7 +1551,7 @@ dotenv@^8.2.0:
 
 "dropzone@https://github.com/blueBlue0102/dropzone.git":
   version "5.9.2"
-  resolved "https://github.com/blueBlue0102/dropzone.git#ce16bbeba025f87c48e165ac4a78c83ea1e1e83a"
+  resolved "https://github.com/blueBlue0102/dropzone.git#96f299353d0e44df50a8feeb0f09b4a802f4ac42"
 
 ecc-jsbn@~0.1.1:
   version "0.1.2"
