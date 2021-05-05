@@ -52,9 +52,16 @@ router.post("/", async (req, res, next) => {
       console.log(err.message);
       return res.status(400).end(err.message);
     }
-    console.log("parsing");
-    console.log("files:", files.file.mimetype);
-    return res.status(200).render("upload");
+
+    const imagePath = path.join(
+      process.env.SERVER_HOST_NAME,
+      files.file.newFilename
+    );
+
+    res.status(200).json({
+      imageName: files.file.newFilename,
+      imagePath: imagePath,
+    });
   });
 });
 
