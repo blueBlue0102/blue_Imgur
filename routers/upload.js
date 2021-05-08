@@ -1,5 +1,6 @@
 const formidable = require("formidable");
 const path = require("path");
+const winston = require("winston");
 
 const FORMIDABLE_CONFIG = {
   uploadDir: path.join(
@@ -46,18 +47,28 @@ module.exports = async (req, res, next) => {
   const form = formidable(FORMIDABLE_CONFIG);
   form.parse(req, function (err, fields, files) {
     if (err) {
-      console.log(err.message);
+      winston.error({
+        userId: req.user.id,
+        userName: req.user.displayName,
+        errorMessage: err.message,
+        ip: req.ip,
+      });
       return res.status(400).end(err.message);
     }
 
-    const imagePath = path.join(
-      process.env.SERVER_HOST_NAME,
-      files.file.newFilename
-    );
+    winston.info({
+      userId: req.user.id,
+      userName: req.user.displayName,
+      fileName: files.file.newFilename,
+      ip: req.ip,
+    });
 
     res.status(200).json({
       imageName: files.file.newFilename,
-      imagePath: imagePath,
+      imagePath: path.join(
+        process.env.SERVER_HOST_NAME,
+        files.file.newFilename
+      ),
     });
   });
 };

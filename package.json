@@ -20,7 +20,8 @@
     "joi": "^17.3.0",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
-    "redis": "^3.1.2"
+    "redis": "^3.1.2",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "css-loader": "^5.2.4",
