@@ -11,11 +11,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "connect-redis": "^5.2.0",
     "dropzone": "https://github.com/blueBlue0102/dropzone.git",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "formidable": "github:node-formidable/formidable",
-    "joi": "^17.3.0"
+    "joi": "^17.3.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "redis": "^3.1.2"
   },
   "devDependencies": {
     "css-loader": "^5.2.4",

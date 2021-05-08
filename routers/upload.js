@@ -1,8 +1,5 @@
-const express = require("express");
 const formidable = require("formidable");
 const path = require("path");
-
-const router = express.Router();
 
 const FORMIDABLE_CONFIG = {
   uploadDir: path.join(
@@ -45,7 +42,7 @@ const FORMIDABLE_CONFIG = {
   // },
 };
 
-router.post("/", async (req, res, next) => {
+module.exports = async (req, res, next) => {
   const form = formidable(FORMIDABLE_CONFIG);
   form.parse(req, function (err, fields, files) {
     if (err) {
@@ -63,6 +60,4 @@ router.post("/", async (req, res, next) => {
       imagePath: imagePath,
     });
   });
-});
-
-module.exports = router;
+};
