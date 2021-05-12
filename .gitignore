@@ -2,6 +2,7 @@
 node_modules
 .vscode
 dist
+log
 # JS file
 play ground.js
 # env

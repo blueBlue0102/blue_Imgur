@@ -1,8 +1,7 @@
-const express = require("express");
 const formidable = require("formidable");
 const path = require("path");
-
-const router = express.Router();
+const winston = require("winston");
+const sequelize = require("../models/index");
 
 const FORMIDABLE_CONFIG = {
   uploadDir: path.join(
@@ -45,24 +44,45 @@ const FORMIDABLE_CONFIG = {
   // },
 };
 
-router.post("/", async (req, res, next) => {
+module.exports = (req, res, next) => {
   const form = formidable(FORMIDABLE_CONFIG);
   form.parse(req, function (err, fields, files) {
     if (err) {
-      console.log(err.message);
+      winston.error({
+        userId: req.user.id,
+        userName: req.user.displayName,
+        errorMessage: err.message,
+        ip: req.ip,
+      });
       return res.status(400).end(err.message);
     }
 
-    const imagePath = path.join(
-      process.env.SERVER_HOST_NAME,
-      files.file.newFilename
-    );
+    winston.info({
+      userId: req.user.id,
+      userName: req.user.displayName,
+      fileName: files.file.newFilename,
+      ip: req.ip,
+    });
+
+    // log file info into database
+    sequelize.models.File.create({
+      google_id: req.user.id,
+      file_name: files.file.newFilename,
+      expiration_date: null,
+    });
+
+    // upload_amount += 1
+    (async () => {
+      const user = await sequelize.models.User.findByPk(req.user.id);
+      user.increment("upload_amount");
+    })();
 
     res.status(200).json({
       imageName: files.file.newFilename,
-      imagePath: imagePath,
+      imagePath: path.join(
+        process.env.SERVER_HOST_NAME,
+        files.file.newFilename
+      ),
     });
   });
-});
-
-module.exports = router;
+};
