@@ -40,6 +40,8 @@ app.use(passport.session());
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
+
+// routes
 require("./routers/index")(app);
 
 app.listen(process.env.PORT, () => {
