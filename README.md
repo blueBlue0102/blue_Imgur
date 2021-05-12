@@ -9,11 +9,13 @@ $ yarn install
 $ npx webpack
 ```
 
-## Features  
+## Features
 
 - Upload image via:
   - Click Upload Button
-  - Drag and Drop the File 
+  - Drag and Drop the File
   - Paste From Clipboard
-- Click image preview to copy the URL of data  
-- (Not yet) Account System 
+- Click image preview to copy the URL of file
+- Account System:
+  - Login via Google OAuth2
+  - Guest can only upload 3 file
