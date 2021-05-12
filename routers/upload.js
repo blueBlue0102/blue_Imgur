@@ -1,6 +1,7 @@
 const formidable = require("formidable");
 const path = require("path");
 const winston = require("winston");
+const sequelize = require("../models/index");
 
 const FORMIDABLE_CONFIG = {
   uploadDir: path.join(
@@ -61,6 +62,12 @@ module.exports = async (req, res, next) => {
       userName: req.user.displayName,
       fileName: files.file.newFilename,
       ip: req.ip,
+    });
+
+    sequelize.models.File.create({
+      google_id: req.user.id,
+      file_name: files.file.newFilename,
+      expiration_date: null,
     });
 
     res.status(200).json({
