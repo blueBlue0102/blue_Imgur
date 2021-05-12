@@ -12,15 +12,8 @@ module.exports = async function (req, res) {
         last_login_date: Date.now(),
       });
     } else {
-      // update account
-      sequelize.models.User.update(
-        { last_login_date: Date.now() },
-        {
-          where: {
-            google_id: req.user.id,
-          },
-        }
-      );
+      // update account login time
+      user.update({ last_login_date: Date.now() });
     }
     res.status(200).render("upload");
   }

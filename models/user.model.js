@@ -23,6 +23,11 @@ module.exports = (sequelize) => {
         defaultValue: "Guest",
         allowNull: false,
       },
+      upload_amount: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        allowNull: false,
+      },
       last_login_date: {
         type: DataTypes.DATE,
         allowNull: false,

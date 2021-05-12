@@ -44,7 +44,7 @@ const FORMIDABLE_CONFIG = {
   // },
 };
 
-module.exports = async (req, res, next) => {
+module.exports = (req, res, next) => {
   const form = formidable(FORMIDABLE_CONFIG);
   form.parse(req, function (err, fields, files) {
     if (err) {
@@ -64,11 +64,18 @@ module.exports = async (req, res, next) => {
       ip: req.ip,
     });
 
+    // log file info into database
     sequelize.models.File.create({
       google_id: req.user.id,
       file_name: files.file.newFilename,
       expiration_date: null,
     });
+
+    // upload_amount += 1
+    (async () => {
+      const user = await sequelize.models.User.findByPk(req.user.id);
+      user.increment("upload_amount");
+    })();
 
     res.status(200).json({
       imageName: files.file.newFilename,
