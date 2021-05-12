@@ -23,6 +23,10 @@ module.exports = (sequelize) => {
         defaultValue: "Guest",
         allowNull: false,
       },
+      last_login_date: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      }
     },
     {
       tableName: "users",
