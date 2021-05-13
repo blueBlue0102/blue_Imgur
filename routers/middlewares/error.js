@@ -6,5 +6,6 @@ module.exports = function (err, req, res, next) {
     ip: req.ip,
     userAgent: req.headers["user-agent"],
   })
-  res.send(err.message);
+  console.log("我的 error middleware 抓到")
+  res.end(err.message);
 };

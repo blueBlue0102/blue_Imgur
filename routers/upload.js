@@ -45,6 +45,9 @@ const FORMIDABLE_CONFIG = {
 };
 
 module.exports = (req, res, next) => {
+  // debug
+  console.log("上傳 middleware 開始");
+
   const form = formidable(FORMIDABLE_CONFIG);
   form.parse(req, function (err, fields, files) {
     if (err) {

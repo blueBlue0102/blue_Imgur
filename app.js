@@ -40,10 +40,15 @@ app.use(passport.session());
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
-
 // routes
 require("./routers/index")(app);
 
-app.listen(process.env.PORT, () => {
+let server = app.listen(process.env.PORT, () => {
   console.log(`App listening at ${process.env.SERVER_HOST_NAME}`);
+});
+
+process.on('error', (err, socket) => {
+  console.log("app.js 'error' emit!!");
+  console.log(err);
+  // socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });
