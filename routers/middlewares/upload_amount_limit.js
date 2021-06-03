@@ -8,12 +8,6 @@ module.exports = async function (req, res, next) {
       account_level === "Guest" &&
       upload_amount >= process.env.LIMIT_AMOUNT_GUEST
     ) {
-      // setTimeout(function () {
-      //   res
-      //     .status(403)
-      //     .end(`普通帳號只能上傳 ${process.env.LIMIT_AMOUNT_GUEST} 張圖！`);
-      // }, 0);
-      // res.set("Connection", "close");
       res
         .status(403)
         .send(`普通帳號只能上傳 ${process.env.LIMIT_AMOUNT_GUEST} 張圖！`);
