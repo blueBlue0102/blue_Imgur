@@ -1,6 +1,6 @@
 const formidable = require("formidable");
 const path = require("path");
-const winston = require("winston");
+const logger = require("../logger");
 const sequelize = require("../models/index");
 
 const FORMIDABLE_CONFIG = {
@@ -48,7 +48,8 @@ module.exports = (req, res, next) => {
   const form = formidable(FORMIDABLE_CONFIG);
   form.parse(req, function (err, fields, files) {
     if (err) {
-      winston.error({
+      logger.error({
+        message: "Something failed when upload image",
         userId: req.user.id,
         userName: req.user.displayName,
         errorMessage: err.message,
@@ -57,7 +58,8 @@ module.exports = (req, res, next) => {
       return res.status(400).end(err.message);
     }
 
-    winston.info({
+    logger.info({
+      message: "successfully upload the image",
       userId: req.user.id,
       userName: req.user.displayName,
       fileName: files.file.newFilename,

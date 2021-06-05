@@ -1,7 +1,7 @@
-const winston = require("winston");
+const logger = require("../../logger");
 
 module.exports = function (err, req, res, next) {
-  winston.warn({
+  logger.warn({
     errorMessage: err.message,
     ip: req.ip,
     userAgent: req.headers["user-agent"],

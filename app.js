@@ -2,16 +2,16 @@ require("dotenv").config();
 const path = require("path");
 
 // logger
-const winston = require("winston");
-const { format } = winston;
-winston.configure({
-  level: "info",
-  format: format.combine(format.timestamp(), format.json()),
-  transports: [
-    new winston.transports.File({ filename: "log/error.log", level: "error" }),
-    new winston.transports.File({ filename: "log/warn.log", level: "warn" }),
-    new winston.transports.File({ filename: "log/info.log", level: "info" }),
-  ],
+const logger = require("./logger");
+
+// catch unhandle error
+process.on("uncaughtException", (err) => {
+  console.log("uncaughtException");
+  logger.error({ errorType: "uncaughtException", errorMessage: err.message });
+});
+process.on("unhandledrejection", (err) => {
+  console.log("unhandledrejection");
+  logger.error({ errorType: "unhandledrejection", errorMessage: err.message });
 });
 
 // express
