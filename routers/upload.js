@@ -82,9 +82,10 @@ module.exports = (req, res, next) => {
     res.status(200).json({
       imageName: files.file.newFilename,
       imagePath: path.join(
+        "https://",
         process.env.SERVER_HOST_NAME,
         files.file.newFilename
-      ),
+      ).replace(':/','://'),
     });
   });
 };
