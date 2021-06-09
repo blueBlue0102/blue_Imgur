@@ -1,7 +1,7 @@
 const sequelize = require("../models/index");
 
 module.exports = async function (req, res) {
-  if (!req.user) res.status(200).render("login");
+  if (!req.user) res.status(200).render("home");
   else {
     const user = await sequelize.models.User.findByPk(req.user.id);
     if (user === null) {
