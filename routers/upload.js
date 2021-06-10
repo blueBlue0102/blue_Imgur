@@ -53,7 +53,7 @@ module.exports = (req, res, next) => {
         userId: req.user.id,
         userName: req.user.displayName,
         errorMessage: err.message,
-        ip: req.ip,
+        ip: req.headers["x-real-ip"],
       });
       return res.status(400).end(err.message);
     }
@@ -63,7 +63,7 @@ module.exports = (req, res, next) => {
       userId: req.user.id,
       userName: req.user.displayName,
       fileName: files.file.newFilename,
-      ip: req.ip,
+      ip: req.headers["x-real-ip"],
     });
 
     // log file info into database

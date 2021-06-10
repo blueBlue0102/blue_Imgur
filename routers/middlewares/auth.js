@@ -5,7 +5,7 @@ module.exports = function (req, res, next) {
   else {
     logger.warn({
       message: "Unauthorized request",
-      ip: req.ip,
+      ip: req.headers["x-real-ip"],
       userAgent: req.headers["user-agent"],
     });
     res.status(401).end("Unauthorized request");
