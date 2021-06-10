@@ -7,3 +7,5 @@ log
 play ground.js
 # env
 .env
+# other
+ecosystem.config.js
