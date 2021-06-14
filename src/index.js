@@ -36,3 +36,30 @@ myDropzone.on("success", function (file, responseText) {
   // let div element could be focus
   file.previewTemplate.setAttribute("tabindex", "-1");
 });
+
+window.addEventListener("paste", (event) => {
+  if (!event.clipboardData) {
+    return;
+  }
+  myDropzone.emit("drop", event);
+
+  // Convert the FileList to an Array
+  // This is necessary for IE11
+  let files = [];
+  for (let i = 0; i < event.clipboardData.files.length; i++) {
+    files[i] = event.clipboardData.files[i];
+  }
+
+  // Even if it's a folder, files.length will contain the folders.
+  if (files.length) {
+    let { items } = event.clipboardData;
+    if (items && items.length && items[0].webkitGetAsEntry != null) {
+      // The browser supports dropping of folders, so handle items instead of files
+      myDropzone._addFilesFromItems(items);
+    } else {
+      myDropzone.handleFiles(files);
+    }
+  }
+
+  myDropzone.emit("addedfiles", files);
+});
