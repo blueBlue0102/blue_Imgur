@@ -33,7 +33,7 @@ module.exports = (req, res, next) => {
         errorMessage: err.message,
         ip: req.headers["x-real-ip"],
       });
-      return res.status(400).end(err.message);
+      return res.status(400).end(`上傳失敗。請確認檔案必須小於 ${process.env.DATA_MAX_SIZE} MB`);
     }
 
     // logging
