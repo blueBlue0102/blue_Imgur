@@ -6,11 +6,14 @@ Upload the picture to host on server, and then get the image URL.
 
 <https://blueimgur.com/>
 
-![](https://blueimgur.com/HlIheqdaf2v.gif)
+### Drag and Drop to Upload Image
+![drag and drop image](https://blueimgur.com/KqFheqgi82q.gif)
 
-![](https://blueimgur.com/HKiheqdafdt.gif)
+### Copy and Paste to Upload Image
+![copy and paste image](https://blueimgur.com/bdrheqgqvp1.gif)
 
-![](https://blueimgur.com/B2Aheqe3hf5.gif)
+### Copy Image Link
+![copy image link](https://blueimgur.com/Bikheqh8jl5.gif)
 
 ---
 
