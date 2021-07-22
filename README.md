@@ -3,7 +3,14 @@
 Upload the picture to host on server, and then get the image URL.
 
 ## Demo
-https://blueimgur.com/
+
+<https://blueimgur.com/>
+
+![](https://blueimgur.com/HlIheqdaf2v.gif)
+
+![](https://blueimgur.com/HKiheqdafdt.gif)
+
+![](https://blueimgur.com/B2Aheqe3hf5.gif)
 
 ---
 
