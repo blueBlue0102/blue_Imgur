@@ -1,6 +1,6 @@
 {
   "name": "blue_imgur",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "My personal imgur service.",
   "private": true,
   "scripts": {
@@ -17,7 +17,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "formidable": "github:node-formidable/formidable",
+    "formidable": "2.0.1",
     "joi": "^17.3.0",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
